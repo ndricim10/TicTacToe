@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    
+    <div class="TicTacToe">
+        <div class="points">
+            <div class="x_points">
+                <span>X</span>
+                <span class="x_span" data-x-points></span>
+            </div>
+            <div class="o_points">
+                <span>O</span>
+                <span class="x_span" data-o-points></span>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <div class="cell" id="0" data-cell>
+            </div>
+            <div class="cell" id="1" data-cell>
+            </div>
+            <div class="cell" id="2" data-cell>
+            </div>
+            <div class="cell x" id="3" data-cell>
+            </div>
+            <div class="cell" id="4" data-cell>
+            </div>
+            <div class="cell" id="5" data-cell>
+            </div>
+            <div class="cell" id="6" data-cell>
+            </div>
+            <div class="cell" id="7" data-cell>
+            </div>
+            <div class="cell" id="8" data-cell>
+            </div>
+        </div>
+    </div>
+
+    <div class="restart-game">
+        <span x-wins></span><span class="winner" data-winner>Wins</span>
+        <button data-restart onclick="startGame()">Restart game</button>
+    </div>
+
+
+
+
+    <script src="./app.js"></script>
+</body>
+</html>
