@@ -23,7 +23,12 @@ body {
   align-items: center;
   margin: 0;
 }
-body .TicTacToe {
+body .column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .column .TicTacToe {
   border-bottom: none;
   min-height: 80vh;
   width: 90vw;
@@ -32,7 +37,7 @@ body .TicTacToe {
   align-items: center;
   flex-direction: column;
 }
-body .TicTacToe .points {
+body .column .TicTacToe .points {
   display: flex;
   padding-block: 10px;
   width: 60vw;
@@ -40,8 +45,8 @@ body .TicTacToe .points {
   align-items: center;
   justify-content: space-around;
 }
-body .TicTacToe .points .x_points,
-body .TicTacToe .points .o_points {
+body .column .TicTacToe .points .x_points,
+body .column .TicTacToe .points .o_points {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -55,17 +60,17 @@ body .TicTacToe .points .o_points {
   color: black;
   font-weight: 700;
 }
-body .TicTacToe .points .x_points .x_span,
-body .TicTacToe .points .o_points .x_span {
+body .column .TicTacToe .points .x_points .x_span,
+body .column .TicTacToe .points .o_points .x_span {
   opacity: 0.5;
 }
-body .TicTacToe .game-area {
+body .column .TicTacToe .game-area {
   height: 40vh;
   display: grid;
   grid-template-columns: repeat(3, auto);
   gap: 0px;
 }
-body .TicTacToe .game-area .cell {
+body .column .TicTacToe .game-area .cell {
   border: 3px chocolate solid;
   height: var(--cell-size);
   width: var(--cell-size);
@@ -75,19 +80,19 @@ body .TicTacToe .game-area .cell {
   align-items: center;
   font-size: 90px;
 }
-body .TicTacToe .game-area .cell:first-child, body .TicTacToe .game-area .cell:nth-child(2), body .TicTacToe .game-area .cell:nth-child(3) {
+body .column .TicTacToe .game-area .cell:first-child, body .column .TicTacToe .game-area .cell:nth-child(2), body .column .TicTacToe .game-area .cell:nth-child(3) {
   border-top: none;
 }
-body .TicTacToe .game-area .cell:nth-child(3n+1) {
+body .column .TicTacToe .game-area .cell:nth-child(3n+1) {
   border-left: none;
 }
-body .TicTacToe .game-area .cell:nth-child(3n+3) {
+body .column .TicTacToe .game-area .cell:nth-child(3n+3) {
   border-right: none;
 }
-body .TicTacToe .game-area .cell:nth-child(7), body .TicTacToe .game-area .cell:nth-child(8), body .TicTacToe .game-area .cell:nth-child(9) {
+body .column .TicTacToe .game-area .cell:nth-child(7), body .column .TicTacToe .game-area .cell:nth-child(8), body .column .TicTacToe .game-area .cell:nth-child(9) {
   border-bottom: none;
 }
-body .TicTacToe .game-area .cell .x {
+body .column .TicTacToe .game-area .cell .x {
   width: var(--inside-size);
   height: var(--inside-size);
   display: flex;
@@ -96,26 +101,26 @@ body .TicTacToe .game-area .cell .x {
   position: relative;
   cursor: not-allowed;
 }
-body .TicTacToe .game-area .cell .x:hover {
+body .column .TicTacToe .game-area .cell .x:hover {
   display: block;
 }
-body .TicTacToe .game-area .cell .x::before, body .TicTacToe .game-area .cell .x::after {
+body .column .TicTacToe .game-area .cell .x::before, body .column .TicTacToe .game-area .cell .x::after {
   content: "";
   position: absolute;
 }
-body .TicTacToe .game-area .cell .x::before {
+body .column .TicTacToe .game-area .cell .x::before {
   background-color: black;
   width: calc(var(--cell-size) * 0.1);
   height: var(--inside-size);
   transform: rotate(45deg);
 }
-body .TicTacToe .game-area .cell .x::after {
+body .column .TicTacToe .game-area .cell .x::after {
   background-color: black;
   width: calc(var(--cell-size) * 0.1);
   height: var(--inside-size);
   transform: rotate(-45deg);
 }
-body .TicTacToe .game-area .cell .o {
+body .column .TicTacToe .game-area .cell .o {
   width: var(--inside-size);
   height: var(--inside-size);
   display: flex;
@@ -123,21 +128,36 @@ body .TicTacToe .game-area .cell .o {
   align-items: center;
   position: relative;
 }
-body .TicTacToe .game-area .cell .o::before, body .TicTacToe .game-area .cell .o::after {
+body .column .TicTacToe .game-area .cell .o::before, body .column .TicTacToe .game-area .cell .o::after {
   content: "";
   position: absolute;
 }
-body .TicTacToe .game-area .cell .o::before {
+body .column .TicTacToe .game-area .cell .o::before {
   background-color: black;
   width: var(--inside-size);
   height: var(--inside-size);
   border-radius: 50%;
 }
-body .TicTacToe .game-area .cell .o::after {
+body .column .TicTacToe .game-area .cell .o::after {
   background-color: white;
   width: calc(var(--inside-size) * 0.75);
   height: calc(var(--inside-size) * 0.75);
   border-radius: 50%;
+}
+body .column button {
+  font-size: 2rem;
+  border: transparent;
+  outline: transparent;
+  border-radius: 20px;
+  padding-inline: 10px;
+  cursor: pointer;
+  color: chocolate;
+  font-weight: 900;
+  transform: translateY(-50px);
+}
+body .column button:hover {
+  color: white;
+  background-color: chocolate;
 }
 body .restart-game {
   display: flex;
@@ -148,24 +168,24 @@ body .restart-game {
   right: 0;
   bottom: 0;
   background-color: darkgray;
-  opacity: 0.7;
+  opacity: 0.95;
   justify-content: center;
   align-items: center;
-  display: none;
 }
 body .restart-game .winner {
   font-size: 3rem;
   font-weight: 900;
 }
-body .restart-game button {
+body .restart-game input {
   font-size: 2rem;
   border: transparent;
   outline: transparent;
   border-radius: 20px;
   padding-inline: 10px;
   cursor: pointer;
+  border: 3px red solid;
 }
-body .restart-game button:hover {
+body .restart-game input:hover {
   color: white;
   background-color: transparent;
 }

@@ -9,6 +9,7 @@
 </head>
 <body>
     
+    <div class="column">
     <div class="TicTacToe">
         <div class="points">
             <div class="x_points">
@@ -42,12 +43,15 @@
             </div>
         </div>
     </div>
+        <button onclick="endGame()">Restart game</button> <!-- Reloads the page-->
+</div>
 
     <div class="restart-game">
-        <span x-wins></span><span class="winner" data-winner>Wins</span>
-        <button data-restart onclick="startGame()">Restart game</button>
+        <span x-wins></span><span class="winner" data-winner>Let's play</span>
+        <input type="button" data-restart onclick="startGame()" id="btn" value="Start game">
     </div>
 
+    
 
 
 

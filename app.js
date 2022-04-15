@@ -2,7 +2,7 @@ const cells = document.querySelectorAll('[data-cell]')
 const showX = document.querySelectorAll('[data-x-show]')
 const showO = document.querySelectorAll('[data-o-show]')
 const chooseWinner = document.querySelector('[data-winner]')
-const restartGame = document.querySelector('[data-restart]')
+const restartGame = document.getElementById('btn')
 const restartClass = document.querySelector('.restart-game')
 const winCombos=[
     [0,1,2],
@@ -89,10 +89,12 @@ function handleClick(e) {
           localStorage.setItem('o_points', O_Points)
           document.querySelector('[data-o-points]').innerHTML
           =localStorage.getItem('o_points');
-          restartClass.style.display='block'
-          document.querySelector('[x-wins]').innerHTML="O "
+          restartClass.style.display='flex'
+          document.querySelector('[x-wins]').innerHTML="O wins!"
           document.querySelector('[x-wins]').classList.add('winner')
           clear();
+          chooseWinner.style.display='none'
+          restartGame.value='Play another round'
           return
       }      
       if(
@@ -136,19 +138,23 @@ function handleClick(e) {
         localStorage.setItem('x_points', X_Points)
         document.querySelector('[data-x-points]').innerHTML
         =localStorage.getItem('x_points');
-        restartClass.style.display='block'
-        document.querySelector('[x-wins]').innerHTML="X "
+        restartClass.style.display='flex'
+        document.querySelector('[x-wins]').innerHTML="X wins!"
         document.querySelector('[x-wins]').classList.add('winner')
         clear();
+        chooseWinner.style.display='none'
+        restartGame.value='Play another round'
         return
     }  
     // console.log((counter));
     if(counter>=9){
         counter=0;
-        restartClass.style.display='block'
-        document.querySelector('[x-wins]').innerHTML="No one "
+        restartClass.style.display='flex'
+        document.querySelector('[x-wins]').innerHTML="It's a draw!"
         document.querySelector('[x-wins]').classList.add('winner')
         clear();
+        chooseWinner.style.display='none'
+        restartGame.value='Play another round'
         return
     }
       }
@@ -170,3 +176,7 @@ function handleClick(e) {
         clear();
       }
     //   restartGame.addEventListener('click', clear)
+
+    function endGame(){
+      window.location.reload()
+    }
