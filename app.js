@@ -1,5 +1,3 @@
-
-
 const cells = document.querySelectorAll('[data-cell]')
 const showX = document.querySelectorAll('[data-x-show]')
 const showO = document.querySelectorAll('[data-o-show]')
@@ -51,24 +49,108 @@ function handleClick(e) {
 
   function check(pick){
       if(
-          (cells[0].innerHTML===pick &&
-          cells[1].innerHTML===pick &&
-          cells[2].innerHTML===pick ) || 
+          (cells[0].innerHTML=== 'O' &&
+          cells[1].innerHTML==='O' &&
+          cells[2].innerHTML==='O' ) || 
 
-          (cells[3].innerHTML===pick &&
-          cells[4].innerHTML===pick &&
-          cells[2].innerHTML===pick )
+          (cells[3].innerHTML==='O' &&
+          cells[4].innerHTML==='O' &&
+          cells[5].innerHTML==='O') || 
+
+          (cells[6].innerHTML==='O' &&
+          cells[7].innerHTML==='O' &&
+          cells[8].innerHTML==='O') || 
+
+          (cells[1].innerHTML==='O' &&
+          cells[4].innerHTML==='O' &&
+          cells[7].innerHTML==='O') || 
+
+          (cells[0].innerHTML==='O' &&
+          cells[3].innerHTML==='O' &&
+          cells[6].innerHTML==='O') || 
+
+          (cells[2].innerHTML==='O' &&
+          cells[5].innerHTML==='O' &&
+          cells[8].innerHTML==='O') || 
+
+          (cells[0].innerHTML==='O' &&
+          cells[4].innerHTML==='O' &&
+          cells[8].innerHTML==='O')
+
+          || 
+
+          (cells[2].innerHTML==='O' &&
+          cells[4].innerHTML==='O' &&
+          cells[6].innerHTML==='O')
         // winCombos.includes('O')
       ){
-          X_Points++;
-          localStorage.setItem('x_points', X_Points)
-          document.querySelector('[data-x-points]').innerHTML=localStorage.getItem('x_points');
+          O_Points++;
+          counter=0;
+          localStorage.setItem('o_points', O_Points)
+          document.querySelector('[data-o-points]').innerHTML
+          =localStorage.getItem('o_points');
           restartClass.style.display='block'
-          document.querySelector('[x-wins]').innerHTML="X "
+          document.querySelector('[x-wins]').innerHTML="O "
           document.querySelector('[x-wins]').classList.add('winner')
           clear();
-          console.log(X_Points);
-      }        
+          return
+      }      
+      if(
+        (cells[0].innerHTML=== 'X' &&
+        cells[1].innerHTML==='X' &&
+        cells[2].innerHTML==='X' ) || 
+
+        (cells[3].innerHTML==='X' &&
+        cells[4].innerHTML==='X' &&
+        cells[5].innerHTML==='X') || 
+
+        (cells[6].innerHTML==='X' &&
+        cells[7].innerHTML==='X' &&
+        cells[8].innerHTML==='X') || 
+
+        (cells[1].innerHTML==='X' &&
+        cells[4].innerHTML==='X' &&
+        cells[7].innerHTML==='X') || 
+
+        (cells[0].innerHTML==='X' &&
+        cells[3].innerHTML==='X' &&
+        cells[6].innerHTML==='X') || 
+
+        (cells[2].innerHTML==='X' &&
+        cells[5].innerHTML==='X' &&
+        cells[8].innerHTML==='X') || 
+
+        (cells[0].innerHTML==='X' &&
+        cells[4].innerHTML==='X' &&
+        cells[8].innerHTML==='X')
+
+        || 
+
+        (cells[2].innerHTML==='X' &&
+        cells[4].innerHTML==='X' &&
+        cells[6].innerHTML==='X')
+      // winCombos.includes('O')
+    ){
+        X_Points++;
+        counter=0;
+        localStorage.setItem('x_points', X_Points)
+        document.querySelector('[data-x-points]').innerHTML
+        =localStorage.getItem('x_points');
+        restartClass.style.display='block'
+        document.querySelector('[x-wins]').innerHTML="X "
+        document.querySelector('[x-wins]').classList.add('winner')
+        clear();
+        return
+    }  
+    // console.log((counter));
+    if(counter>=9){
+        counter=0;
+        restartClass.style.display='block'
+        document.querySelector('[x-wins]').innerHTML="No one "
+        document.querySelector('[x-wins]').classList.add('winner')
+        clear();
+        return
+    }
       }
   
       function clear(){
@@ -76,6 +158,8 @@ function handleClick(e) {
         // window.location.reload();
         cells.forEach(cell=>{
             cell.innerHTML=''
+            cell.removeEventListener('click', handleClick)
+            cell.addEventListener('click', handleClick, {once: true})
         })
         localStorage.setItem('x_points', X_Points)
         document.querySelector('[data-x-points]').innerHTML=localStorage.getItem('x_points');
@@ -86,7 +170,3 @@ function handleClick(e) {
         clear();
       }
     //   restartGame.addEventListener('click', clear)
-
-
-
- 
